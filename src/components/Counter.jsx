@@ -3,14 +3,18 @@ import './counter.css'
 
 class Counter extends Component{
     state = {
-        count: 0
+        count: 0,
     }
     render() {
+        let classes = "badge";
+        classes += this.state.count === 0 ?  " green" :  " blue";
+
+
         return(
            <div>
             <button onClick={this.handleIncrement}>Povecaj</button>
             <button onClick={this.handleDecrement}>Smanji</button>
-            <span>{this.formatCount()}</span>
+            <span className={classes}>{this.formatCount()}</span>
            </div>
         )
     }
