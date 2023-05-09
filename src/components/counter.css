@@ -1,15 +1,22 @@
 div{
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
 }
 button{
     padding: 5px;
     margin: 5px;
 }
-span{
+.badge{
     padding: 5px;
     margin: 5px;
+    border-radius: 2px;
+}
+.green{
+    background-color: greenyellow;
+}
+.blue{
+    background-color: aquamarine;
 }
