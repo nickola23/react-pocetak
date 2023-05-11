@@ -1,14 +1,28 @@
 import React, {Component} from "react";
 import './counter.css'
+ 
+function Counters() {
+const countersList = [
+        {id: 1, value: 2},
+        {id: 2, value: 3},
+        {id: 3, value: 0}
+    ];
+    return (
+        <>
+        <ul>
+            {countersList.map((counter) => <Counter key={counter.id} value={counter.value} />)}
+        </ul>
+        </>
+    );
+}
 
 class Counter extends Component{
     state = {
-        count: 0,
+        count: this.props.value,
     }
     render() {
         let classes = "badge";
-        classes += this.state.count === 0 ?  " green" :  " blue";
-
+        classes += this.state.count === 0 ?  " green" :  classes += this.state.count > 0 ? " blue" : " red";
 
         return(
            <div>
@@ -33,4 +47,4 @@ class Counter extends Component{
     }
 }
 
-export default Counter;
+export default Counters;
