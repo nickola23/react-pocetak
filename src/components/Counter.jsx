@@ -40,8 +40,8 @@ class Counter extends Component{
 
         return(
            <div>
-            <button onClick={this.handleIncrement}>Povecaj</button>
-            <button onClick={this.handleDecrement}>Smanji</button>
+            <button onClick={this.handleIncrement}>+</button>
+            <button onClick={this.handleDecrement}>-</button>
             <span className={classes}>{this.formatCount()}</span>
            </div>
         )

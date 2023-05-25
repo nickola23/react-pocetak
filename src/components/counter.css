@@ -1,24 +1,43 @@
 div{
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 button{
-    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    padding: 15px;
     margin: 5px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgb(194, 194, 194);
+    
 }
 .badge{
     padding: 5px;
     margin: 5px;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 .green{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
     background-color: greenyellow;
 }
 .blue{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
     background-color: aquamarine;
 }
 .red{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
     background-color: red;
 }
