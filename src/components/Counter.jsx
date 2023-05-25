@@ -20,18 +20,6 @@ class Counter extends Component{
     state = {
         count: this.props.value,
     }
-    render() {
-        let classes = "badge";
-        classes += this.state.count === 0 ?  " green" :  classes += this.state.count > 0 ? " blue" : " red";
-
-        return(
-           <div>
-            <button onClick={this.handleIncrement}>Povecaj</button>
-            <button onClick={this.handleDecrement}>Smanji</button>
-            <span className={classes}>{this.formatCount()}</span>
-           </div>
-        )
-    }
 
     formatCount(){
         const { count } = this.state;
@@ -44,6 +32,19 @@ class Counter extends Component{
 
     handleDecrement = () => {
         this.setState({ count: this.state.count - 1})
+    }
+
+    render() {
+        let classes = "badge";
+        classes += this.state.count === 0 ?  " green" :  classes += this.state.count > 0 ? " blue" : " red";
+
+        return(
+           <div>
+            <button onClick={this.handleIncrement}>Povecaj</button>
+            <button onClick={this.handleDecrement}>Smanji</button>
+            <span className={classes}>{this.formatCount()}</span>
+           </div>
+        )
     }
 }
 
