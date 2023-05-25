@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './App';
-import Layout from "./components/Layout";
+import Navbar from "./components/Navbar";
 import Counter from './components/Counter';
 import ColorPicker from './components/ColorPicker';
 import reportWebVitals from './reportWebVitals';
@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Navbar />}>
                 <Route index element={<App />} />
                 <Route path="colorPicker" element={<ColorPicker />}/>
                 <Route path="counter" element={<Counter />}/>

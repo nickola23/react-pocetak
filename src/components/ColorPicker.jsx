@@ -19,7 +19,7 @@ function ColorPicker() {
         }
       }}
     >
-      <p><b> This background color is {color}</b></p>
+      <p><b> This background color is { color }</b></p>
     </div>
   );
 }

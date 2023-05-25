@@ -3,14 +3,16 @@ import './counter.css'
  
 function Counters() {
 const countersList = [
-        {id: 1, value: 2},
-        {id: 2, value: 3},
-        {id: 3, value: 0}
+        {id: 0, value: 1, price: "129.00", name: "AirPods", src: "./counterImages/prod1.jpg"},
+        {id: 1, value: 0, price: "229.00", name: "AirPods PRO", src: "./counterImages/prod2.jpg"},
+        {id: 2, value: 2, price: "179.00", name: "AirPods", src: "./counterImages/prod1.jpg"},
+        {id: 3, value: 0, price: "549.00", name: "AirPods MAX", src: "./counterImages/prod1.jpg"},
+        {id: 4, value: 3, price: "799.00", name: "AirPods MAX", src: "./counterImages/prod2.jpg"}
     ];
     return (
         <>
         <ul>
-            {countersList.map((counter) => <Counter key={counter.id} value={counter.value} />)}
+            {countersList.map((counter) => <Counter key={counter.id} value={counter.value} price={counter.price} name={counter.name} src={counter.src} />)}
         </ul>
         </>
     );
@@ -18,12 +20,12 @@ const countersList = [
 
 class Counter extends Component{
     state = {
-        count: this.props.value,
+        count: this.props.value
     }
 
     formatCount(){
         const { count } = this.state;
-        return count === 0 ? 'Nula' : this.state.count;
+        return count === 0 ? 'Nula' :  this.state.count;
     }
 
     handleIncrement = () => {
@@ -31,7 +33,7 @@ class Counter extends Component{
     }
 
     handleDecrement = () => {
-        this.setState({ count: this.state.count - 1})
+        this.state.count === 0 ? this.state.count = 0 :  this.setState({ count: this.state.count - 1})
     }
 
     render() {
@@ -39,11 +41,25 @@ class Counter extends Component{
         classes += this.state.count === 0 ?  " green" :  classes += this.state.count > 0 ? " blue" : " red";
 
         return(
-           <div>
-            <button onClick={this.handleIncrement}>+</button>
-            <button onClick={this.handleDecrement}>-</button>
-            <span className={classes}>{this.formatCount()}</span>
+           <div className="item">
+            <div className="product">
+                    <img src= { this.props.src } alt="" class="productImg" />
+                    <div className="productDesc">
+                        <div className="productName">
+                            { this.props.name }
+                        </div>
+                        <div className="productPrice">
+                            { this.props.price}
+                        </div>
+                    </div>
+                    <div className="productCart">
+                        <button className="add" onClick={ this.handleIncrement }>+</button>
+                        <button onClick={ this.handleDecrement }>-</button>
+                        <span className={ classes}>{this.formatCount() }</span>
+                    </div>
+                </div>
            </div>
+           
         )
     }
 }

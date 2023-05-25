@@ -1,8 +1,11 @@
 div{
-    width: 100%;
-    display: flex;
-    justify-content: center;
     align-items: center;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-width: 100%;
 }
 button{
     display: flex;
@@ -15,8 +18,8 @@ button{
     border: none;
     border-radius: 50%;
     cursor: pointer;
+    user-select: none;
     background-color: rgb(194, 194, 194);
-    
 }
 .badge{
     padding: 5px;
@@ -27,17 +30,80 @@ button{
     padding: 5px;
     margin: 5px;
     border-radius: 4px;
-    background-color: greenyellow;
+    background-color: rgb(229, 255, 190);
 }
 .blue{
     padding: 5px;
     margin: 5px;
     border-radius: 4px;
-    background-color: aquamarine;
+    background-color: rgb(187, 255, 232);
 }
 .red{
     padding: 5px;
     margin: 5px;
     border-radius: 4px;
     background-color: red;
+}
+.product{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    height: 350px;
+    margin: 5px;
+    margin-left: 10px;
+    margin-right: auto;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    transition: all 0.2s ease-in-out;
+}
+.product:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.productImg{
+    width: 90%;
+    height: auto;
+    cursor: pointer;
+}
+.productDesc{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #000;
+    text-decoration: none;
+}
+.productName{
+    font-size: 16px;
+    text-align: center;
+}
+.productPrice{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+.productCart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.productCart button{
+    height: 30px;
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 5px;
+    border-style: hidden;
+    background-color: rgb(235, 234, 234);
+    padding: 2px 24px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+.productCart button:hover{
+    background-color: rgb(212, 212, 212);
+    cursor: pointer;
+}
+.add{
+    width: 50%;
 }
