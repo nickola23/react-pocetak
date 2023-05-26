@@ -5,14 +5,13 @@ html,body{
 body{
     margin: 0;
     padding: 0;
-    /*display: flex;*/
 }
 .flex{
     display: flex;
 }
 .justifyCenter{
     width: 100%;
-    height: calc(100vh / 2 - 80px);
+    height: calc(100vh / 2 - 180px);
     display: flex;
     margin: 0; 
     justify-content: center;
@@ -24,11 +23,13 @@ body{
     background-size: 60%;
     margin: 0px;
     width: calc(100%);
-    height: calc(100% - 60px);
+    height: calc(100vh);
 }
 .main-container {
     width: 80%;
     height: 70%;
+    margin-top: 100px;
+    margin-bottom: 100px;
     padding: 50px;
     border-radius: 50px;
     align-self: center;
