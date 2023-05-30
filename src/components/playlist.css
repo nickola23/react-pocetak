@@ -1,0 +1,48 @@
+.playlistMain{
+    width: 100vw;
+    height: calc(100vh - 60px);
+    display: flex;
+}
+.playlistForm{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.songList{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.playlist{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.song{
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    user-select: none;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    transition: all 0.2s ease-in-out;
+}
+.song:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.songName{
+    font-weight: bold;
+}
+.songDesc{
+    font-size: 13px;
+}

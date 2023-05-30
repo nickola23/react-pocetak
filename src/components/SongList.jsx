@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import "./playlist.css";
 
 function SongList(){
 
     const [songs, setSongs] = useState([]);
     
-    const [playSongs, setPlaySongs] = useState([]);
+    const [playlist, setPlaylist] = useState([]);
 
     const [inputSong, setInputSong] = useState("");
     
@@ -30,30 +31,44 @@ function SongList(){
     const handleAddToPlaylist = (song) => {
 
         var i = 0;
-        playSongs.forEach(s => {
+        playlist.forEach(s => {
             i++;
         });
-        setPlaySongs([...playSongs, {id: i, songName: song.songName}]);
-        console.log(playSongs[i - 1]);
+        setPlaylist([...playlist, {id: i, songName: song.songName}]);
+        setSongs(songs.filter((s) => s !== song));
       };
+
+    function handleAddSongToList(song){
+        
+        var i = 0;
+        songs.forEach(s => {
+            i++;
+        });
+        setSongs(songs => [...songs, {id: i, songName: song.songName}]);
+        setPlaylist(playlist.filter((s) => s !== song));
+    }
     
     return(
         <>
-            <form>
-                <input type='text' value={ inputSong } onChange={ handleChange } />
-                <input type="submit" value='Dodaj pesmu' onClick={ handleSubmitSong }/>
-            </form>
-            <h2>Available Songs</h2>
-            <div>
-                <ul>
-                    {songs.map((song) =><li key = {song.id} onClick={() => handleAddToPlaylist(song)}> {song.songName} </li>)}
-                </ul>
-            </div>
-            <h2>Playlist</h2>
-            <div>
-                <ul>
-                    {playSongs.map((song) => <li key = {song.id}> {song.songName} </li>)}
-                </ul>
+            <div className='playlistMain'>
+                <div className='songList'>
+                <h2>Available Songs</h2>
+                    <div className='playlistUl'>
+                        {songs.map((song) =><div className='song' key = {song.id} onClick={() => handleAddToPlaylist(song)}><span className='songName'>{song.songName}</span><span className='songDesc'>Song id in playlist is: {song.id}</span></div>)}
+                    </div>
+                </div>
+                <div className='playlistForm'>
+                    <form>
+                        <input type='text' value={ inputSong } onChange={ handleChange } />
+                        <input type="submit" value='Dodaj pesmu' onClick={ handleSubmitSong }/>
+                    </form>
+                </div>
+                <div className='playlist'>
+                <h2>Playlist</h2>
+                    <div className='playlistUl'>
+                        {playlist.map((song) => <div className='song' key = {song.id} onClick={() => handleAddSongToList(song)}><span className='songName'>{song.songName}</span><span className='songDesc'>Song id in playlist is: {song.id}</span></div>)}
+                    </div>
+                </div>
             </div>
         </>
     )
