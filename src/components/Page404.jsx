@@ -29,11 +29,11 @@ class Page404 extends Component {
   }
   render() {
     return (
-      <div className="flex main-wrap justifyCenter">
-        <div className="main-container flex">
+      <div className="main-wrap justifyCenter">
+        <div className="main-container">
           <CSSTransition
             in={this.state.pageLoaded}
-            timeout={300}
+            timeout={200}
             classNames="fourOhFour"
             onEntered={() => {
               this.setState({
@@ -43,7 +43,7 @@ class Page404 extends Component {
             unmountOnExit
           >
             {state => (
-              <div className="fourOhFour flex justifyCenter" onMouseMove={(e) => {this.onMouseMove(e)}} onMouseOut={() => {this.setState({astrotop: '10px',astroright: '30px'})}}>
+              <div className="fourOhFour flex justifyCenter" onMouseOver={(e) => {this.onMouseMove(e)}} onMouseOut={() => {this.setState({astrotop: '10px',astroright: '30px'})}}>
                 <img src={fourOhFour}/>
                 <img src={astrodude} className="astrodude" style={{"paddingTop": this.state.astrotop, "paddingRight": this.state.astroright}}/>
               </div>

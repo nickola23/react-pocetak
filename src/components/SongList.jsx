@@ -7,14 +7,6 @@ function SongList(){
     const [playSongs, setPlaySongs] = useState([]);
 
     const [inputSong, setInputSong] = useState("");
-
-    function Song(props){
-        return(
-        <li>
-            { props.songName }
-        </li>
-        )
-    }
     
     const handleChange = (event) => {
         setInputSong(event.target.value)
@@ -22,7 +14,8 @@ function SongList(){
 
     const handleSubmitSong =  (event) => {
         event.preventDefault();
-        addSongToList(inputSong);
+        inputSong === "" ? alert("You must input song.") : addSongToList(inputSong);
+        setInputSong("");
     }
 
     function addSongToList(name){
@@ -32,8 +25,17 @@ function SongList(){
             i++;
         });
         setSongs(songs => [...songs, {id: i, songName: name}]);
-        console.log(songs);
     }
+
+    const handleAddToPlaylist = (song) => {
+
+        var i = 0;
+        playSongs.forEach(s => {
+            i++;
+        });
+        setPlaySongs([...playSongs, {id: i, songName: song.songName}]);
+        console.log(playSongs[i - 1]);
+      };
     
     return(
         <>
@@ -41,9 +43,16 @@ function SongList(){
                 <input type='text' value={ inputSong } onChange={ handleChange } />
                 <input type="submit" value='Dodaj pesmu' onClick={ handleSubmitSong }/>
             </form>
+            <h2>Available Songs</h2>
             <div>
                 <ul>
-                    {songs.map((song) => <Song key={song.id} songName={song.songName} />)}
+                    {songs.map((song) =><li key = {song.id} onClick={() => handleAddToPlaylist(song)}> {song.songName} </li>)}
+                </ul>
+            </div>
+            <h2>Playlist</h2>
+            <div>
+                <ul>
+                    {playSongs.map((song) => <li key = {song.id}> {song.songName} </li>)}
                 </ul>
             </div>
         </>

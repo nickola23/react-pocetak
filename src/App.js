@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,16 +8,13 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Welcome to my <code>reactProject</code><br></br>Here you can explore multiple projects.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Link
+        className="App-link" 
+        to="/counter" 
+        rel="noopener noreferrer">
+        Get Started</Link>
       </header>
     </div>
   );

@@ -1,13 +1,12 @@
 .picker{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
     height: calc(100vh - 60px);
     cursor: pointer;
 }
-div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-p{
+.pickerText{
+    font-size: calc(10px + 2vmin);
     color: #fff;
 }

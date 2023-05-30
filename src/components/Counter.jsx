@@ -11,7 +11,7 @@ const countersList = [
     ];
     return (
         <>
-        <ul>
+        <ul className="counterUl">
             {countersList.map((counter) => <Counter key={counter.id} value={counter.value} price={counter.price} name={counter.name} src={counter.src} />)}
         </ul>
         </>
@@ -43,21 +43,21 @@ class Counter extends Component{
         return(
            <div className="item">
             <div className="product">
-                    <img src= { this.props.src } alt="" class="productImg" />
-                    <div className="productDesc">
-                        <div className="productName">
-                            { this.props.name }
-                        </div>
-                        <div className="productPrice">
-                            { this.props.price}
-                        </div>
+                <img src= { this.props.src } alt="" class="productImg" />
+                <div className="productDesc">
+                    <div className="productName">
+                        { this.props.name }
                     </div>
-                    <div className="productCart">
-                        <button className="add" onClick={ this.handleIncrement }>+</button>
-                        <button onClick={ this.handleDecrement }>-</button>
-                        <span className={ classes}>{this.formatCount() }</span>
+                    <div className="productPrice">
+                        { this.props.price}
                     </div>
                 </div>
+                <div className="productCart">
+                    <button className="add" onClick={ this.handleIncrement }>+</button>
+                    <button onClick={ this.handleDecrement }>-</button>
+                    <span className={ classes}>{this.formatCount() }</span>
+                </div>
+            </div>
            </div>
            
         )
