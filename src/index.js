@@ -6,7 +6,7 @@ import App from './App';
 import Navbar from "./components/Navbar";
 import Counter from './components/Counter';
 import ColorPicker from './components/ColorPicker';
-import SongList from './components/SongList';
+import Playlist from './components/Playlist';
 import Page404 from './components/Page404';
 import reportWebVitals from './reportWebVitals';
 
@@ -18,7 +18,7 @@ root.render(
                 <Route index element={<App />} />
                 <Route path="colorPicker" element={<ColorPicker />}/>
                 <Route path="counter" element={<Counter />}/>
-                <Route path="songList" element={<SongList />}/>
+                <Route path="playlist" element={<Playlist />}/>
             </Route>
             <Route path="*" element={<Page404 />} />
         </Routes>

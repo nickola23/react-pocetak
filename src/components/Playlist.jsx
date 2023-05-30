@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import "./playlist.css";
 
-function SongList(){
+function Playlist(){
 
     const [songs, setSongs] = useState([]);
     
@@ -58,9 +58,10 @@ function SongList(){
                     </div>
                 </div>
                 <div className='playlistForm'>
+                <h2>Add your favorite song</h2>
                     <form>
                         <input type='text' value={ inputSong } onChange={ handleChange } />
-                        <input type="submit" value='Dodaj pesmu' onClick={ handleSubmitSong }/>
+                        <input type="submit" value='Add' onClick={ handleSubmitSong }/>
                     </form>
                 </div>
                 <div className='playlist'>
@@ -74,4 +75,4 @@ function SongList(){
     )
 }
 
-export default SongList;
+export default Playlist;

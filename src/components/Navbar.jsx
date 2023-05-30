@@ -16,7 +16,7 @@ const Navbar = () => {
             <Link to="/counter">Counter</Link>
           </li>
           <li>
-            <Link to="/songList">Song list</Link>
+            <Link to="/playlist">Playlist</Link>
           </li>
         </ul>
       </nav>
