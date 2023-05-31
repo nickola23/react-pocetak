@@ -60,7 +60,8 @@
     padding: 10px;
     border-radius: 5px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     cursor: pointer;
     user-select: none;
     background-color: white;
@@ -68,6 +69,29 @@
 }
 .song:hover{
     background-color: #eeeeee;
+}
+.songProps{
+    display: flex;
+    flex-direction: column;
+}
+.songOptions{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.sOption{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 15px;
+    stroke-width: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sOption:hover{
+    background-color: #e6e6e6;
 }
 .playlistUl{
     overflow-y: auto;

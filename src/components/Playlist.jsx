@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaPlus, FaTrash, FaMinus } from 'react-icons/fa';
 import "./playlist.css";
 
 var i = 0;
@@ -34,6 +35,10 @@ function Playlist(){
         setSongs(songs => [...songs, {id: song.id, songName: song.songName}]);
         setPlaylist(playlist.filter((s) => s !== song));
     }
+
+    const handleDeleteSong = (song) =>{
+        setPlaylist(playlist.filter((s) => s !== song));
+    }
     
     return(
         <>
@@ -41,7 +46,18 @@ function Playlist(){
                 <div className='songList'>
                 <h2>Available Songs</h2>
                     <div className='playlistUl'>
-                        {songs.map((song, index) =><div className='song' key = {index} onClick={() => handleAddToPlaylist(song)}><span className='songName'>{song.songName}</span><span className='songDesc'>Song id in playlist is: {song.id}</span></div>)}
+                        {songs.map((song, index) =>
+                        <div className='song' key = {index} onClick={() => handleAddToPlaylist(song)}>
+                            <div className='songProps'>
+                                <span className='songName'>{song.songName}</span>
+                                <span className='songDesc'>Song id in playlist is: {song.id}</span>
+                            </div>
+                            <div className='songOptions'>
+                                <div className='sOption'>
+                                    <FaPlus />
+                                </div>
+                            </div>
+                        </div>)}
                     </div>
                 </div>
                 <div className='playlistForm'>
@@ -54,7 +70,21 @@ function Playlist(){
                 <div className='playlist'>
                 <h2>Playlist</h2>
                     <div className='playlistUl'>
-                        {playlist.map((song, index) => <div className='song' key = {index} onClick={() => handleAddSongToList(song)}><span className='songName'>{song.songName}</span><span className='songDesc'>Song id in playlist is: {song.id}</span></div>)}
+                        {playlist.map((song, index) => 
+                        <div className='song' key = {index}>
+                            <div className='songProps' onClick={() => handleAddSongToList(song)}>
+                                <span className='songName'>{song.songName}</span>
+                                <span className='songDesc'>Song id in playlist is: {song.id}</span>
+                            </div>
+                            <div className='songOptions'>
+                                <div className='sOption'>
+                                    <FaTrash onClick={ () => handleDeleteSong(song) }/>
+                                </div>
+                                <div className='sOption'>
+                                    <FaMinus onClick={() => handleAddSongToList(song)}/>
+                                </div>
+                            </div>
+                        </div>)}
                     </div>
                 </div>
             </div>
