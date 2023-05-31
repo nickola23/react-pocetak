@@ -10,11 +10,12 @@ const countersList = [
         {id: 4, value: 3, price: "799.00", name: "AirPods MAX", src: "./counterImages/prod2.jpg"}
     ];
     return (
-        <>
-        <ul className="counterUl">
-            {countersList.map((counter) => <Counter key={counter.id} value={counter.value} price={counter.price} name={counter.name} src={counter.src} />)}
-        </ul>
-        </>
+        <div className="counterBody">
+            <div className="banner"> <div className="bannerText">Your ad here .</div> </div>
+            <div className="counterMain">
+                {countersList.map((counter) => <Counter key={counter.id} value={counter.value} price={counter.price} name={counter.name} src={counter.src} />)}
+            </div>
+        </div>
     );
 }
 
@@ -55,7 +56,7 @@ class Counter extends Component{
                 <div className="productCart">
                     <button className="add" onClick={ this.handleIncrement }>+</button>
                     <button onClick={ this.handleDecrement }>-</button>
-                    <span className={ classes}>{this.formatCount() }</span>
+                    <span className={ classes }>{this.formatCount() }</span>
                 </div>
             </div>
            </div>

@@ -44,8 +44,8 @@ class Page404 extends Component {
           >
             {state => (
               <div className="fourOhFour flex justifyCenter" onMouseOver={(e) => {this.onMouseMove(e)}} onMouseOut={() => {this.setState({astrotop: '10px',astroright: '30px'})}}>
-                <img src={fourOhFour}/>
-                <img src={astrodude} className="astrodude" style={{"paddingTop": this.state.astrotop, "paddingRight": this.state.astroright}}/>
+                <img src={fourOhFour} alt='Sky full of stars'/>
+                <img src={astrodude} alt='Floating astronaut' className="astrodude" style={{"paddingTop": this.state.astrotop, "paddingRight": this.state.astroright}}/>
               </div>
             )}
           </CSSTransition>
