@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import "./playlist.css";
 
+var i = 0;
+
 function Playlist(){
 
     const [songs, setSongs] = useState([]);
@@ -20,31 +22,16 @@ function Playlist(){
     }
 
     function addSongToList(name){
-        
-        var i = 0;
-        songs.forEach(s => {
-            i++;
-        });
-        setSongs(songs => [...songs, {id: i, songName: name}]);
+        setSongs(songs => [...songs, {id: i++, songName: name}]);
     }
 
     const handleAddToPlaylist = (song) => {
-
-        var i = 0;
-        playlist.forEach(s => {
-            i++;
-        });
-        setPlaylist([...playlist, {id: i, songName: song.songName}]);
+        setPlaylist([...playlist, {id: song.id, songName: song.songName}]);
         setSongs(songs.filter((s) => s !== song));
       };
 
     function handleAddSongToList(song){
-        
-        var i = 0;
-        songs.forEach(s => {
-            i++;
-        });
-        setSongs(songs => [...songs, {id: i, songName: song.songName}]);
+        setSongs(songs => [...songs, {id: song.id, songName: song.songName}]);
         setPlaylist(playlist.filter((s) => s !== song));
     }
     
@@ -54,7 +41,7 @@ function Playlist(){
                 <div className='songList'>
                 <h2>Available Songs</h2>
                     <div className='playlistUl'>
-                        {songs.map((song) =><div className='song' key = {song.id} onClick={() => handleAddToPlaylist(song)}><span className='songName'>{song.songName}</span><span className='songDesc'>Song id in playlist is: {song.id}</span></div>)}
+                        {songs.map((song, index) =><div className='song' key = {index} onClick={() => handleAddToPlaylist(song)}><span className='songName'>{song.songName}</span><span className='songDesc'>Song id in playlist is: {song.id}</span></div>)}
                     </div>
                 </div>
                 <div className='playlistForm'>
@@ -67,7 +54,7 @@ function Playlist(){
                 <div className='playlist'>
                 <h2>Playlist</h2>
                     <div className='playlistUl'>
-                        {playlist.map((song) => <div className='song' key = {song.id} onClick={() => handleAddSongToList(song)}><span className='songName'>{song.songName}</span><span className='songDesc'>Song id in playlist is: {song.id}</span></div>)}
+                        {playlist.map((song, index) => <div className='song' key = {index} onClick={() => handleAddSongToList(song)}><span className='songName'>{song.songName}</span><span className='songDesc'>Song id in playlist is: {song.id}</span></div>)}
                     </div>
                 </div>
             </div>
