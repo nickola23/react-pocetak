@@ -55,13 +55,14 @@
     align-items: center;
 }
 .song{
-    width: 400px;
-    height: 60px;
+    width: 600px;
+    min-height: 60px;
+    height: fit-content;
     padding: 10px;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: left;
     cursor: pointer;
     user-select: none;
     background-color: white;
@@ -69,6 +70,12 @@
 }
 .song:hover{
     background-color: #eeeeee;
+}
+.song img{
+    width: 160px;
+    height: 90px;
+    border-radius: 5px;
+    margin: 10px;
 }
 .songProps{
     display: flex;
