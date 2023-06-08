@@ -5,8 +5,7 @@ import "./playlist.css";
 
 var i = 0;
 const API_KEY = "AIzaSyCxuk4KI5l5VwlJW9QPjqX-fEIRT1w3CoM";
-var videoTitle;
-var thumbnail;
+var videoTitle, thumbnail, description;
 
 function Playlist(){
 
@@ -22,7 +21,7 @@ function Playlist(){
 
     function search(){
         videoSearch(API_KEY, inputSong, 1);
-        addSongToList(videoTitle, thumbnail);
+        addSongToList(videoTitle, thumbnail, description);
         setInputSong("");
     }
 
@@ -31,17 +30,17 @@ function Playlist(){
         inputSong === "" ? alert("You must input song.") : search();
     }
 
-    function addSongToList(name, thumbnail){
-        setSongs(songs => [...songs, {id: i++, songName: name, songThumbnail: thumbnail}]);
+    function addSongToList(name, thumbnail, description){
+        setSongs(songs => [...songs, {id: i++, songName: name, thumbnail: thumbnail, description: description }]);
     }
 
     const handleAddToPlaylist = (song) => {
-        setPlaylist([...playlist, {id: song.id, songName: song.songName, songThumbnail: song.songThumbnail}]);
+        setPlaylist([...playlist, {id: song.id, songName: song.songName, thumbnail: song.thumbnail, description: song.description }]);
         setSongs(songs.filter((s) => s !== song));
       };
 
     function handleAddSongToList(song){
-        setSongs(songs => [...songs, {id: song.id, songName: song.songName, songThumbnail: song.songThumbnail}]);
+        setSongs(songs => [...songs, {id: song.id, songName: song.songName, thumbnail: song.thumbnail, description: song.description }]);
         setPlaylist(playlist.filter((s) => s !== song));
     }
 
@@ -55,9 +54,10 @@ function Playlist(){
             `https://www.googleapis.com/youtube/v3/search?key=${key}&type=video&part=snippet&maxResults=${maxResults}&q=${search}`
           )
           .then((response) => {
-            videoTitle = response.data.items[0].snippet.title;
-            thumbnail = response.data.items[0].snippet.thumbnails.default.url;
-            console.log(thumbnail);
+            const videoData = response.data.items[0];
+            videoTitle = videoData.snippet.title;
+            thumbnail = videoData.snippet.thumbnails.default.url;
+            description = videoData.snippet.description;
           })
           .catch((error) => {
             console.error("Request failed:", error);
@@ -71,10 +71,12 @@ function Playlist(){
                     <div className='playlistUl'>
                         {songs.map((song, index) =>
                         <div className='song' key = {index} onClick={() => handleAddToPlaylist(song)}>
-                            <img src = { song.songThumbnail } className="songThumbnail" alt="Song thumbnail"/>
-                            <div className='songProps'>
-                                <span className='songName'>{song.songName}</span>
-                                <span className='songDesc'>Song id in playlist is: {song.id}</span>
+                            <div className='songMain'>
+                                <img src = { song.thumbnail } className="songThumbnail" alt="Song thumbnail"/>
+                                <div className='songProps'>
+                                    <span className='songName'>{ song.songName }</span>
+                                    <span className='songDesc'>{ song.description }</span>
+                                </div>
                             </div>
                             <div className='songOptions'>
                                 <div className='sOption'>
