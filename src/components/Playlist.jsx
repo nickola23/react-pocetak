@@ -5,7 +5,7 @@ import "./playlist.css";
 
 var i = 0;
 const API_KEY = "AIzaSyCxuk4KI5l5VwlJW9QPjqX-fEIRT1w3CoM";
-var videoTitle, thumbnail, description;
+var videoTitle, thumbnail, author;
 
 function Playlist(){
 
@@ -21,7 +21,7 @@ function Playlist(){
 
     function search(){
         videoSearch(API_KEY, inputSong, 1);
-        addSongToList(videoTitle, thumbnail, description);
+        addSongToList(videoTitle, thumbnail, author);
         setInputSong("");
     }
 
@@ -30,17 +30,17 @@ function Playlist(){
         inputSong === "" ? alert("You must input song.") : search();
     }
 
-    function addSongToList(name, thumbnail, description){
-        setSongs(songs => [...songs, {id: i++, songName: name, thumbnail: thumbnail, description: description }]);
+    function addSongToList(name, thumbnail, author){
+        setSongs(songs => [...songs, {id: i++, songName: name, thumbnail: thumbnail, author: author}]);
     }
 
     const handleAddToPlaylist = (song) => {
-        setPlaylist([...playlist, {id: song.id, songName: song.songName, thumbnail: song.thumbnail, description: song.description }]);
+        setPlaylist([...playlist, song ]);
         setSongs(songs.filter((s) => s !== song));
       };
 
     function handleAddSongToList(song){
-        setSongs(songs => [...songs, {id: song.id, songName: song.songName, thumbnail: song.thumbnail, description: song.description }]);
+        setSongs(songs => [...songs, song ]);
         setPlaylist(playlist.filter((s) => s !== song));
     }
 
@@ -57,7 +57,8 @@ function Playlist(){
             const videoData = response.data.items[0];
             videoTitle = videoData.snippet.title;
             thumbnail = videoData.snippet.thumbnails.default.url;
-            description = videoData.snippet.description;
+            author = videoData.snippet.channelTitle;
+            console.log(author);
           })
           .catch((error) => {
             console.error("Request failed:", error);
@@ -75,7 +76,7 @@ function Playlist(){
                                 <img src = { song.thumbnail } className="songThumbnail" alt="Song thumbnail"/>
                                 <div className='songProps'>
                                     <span className='songName'>{ song.songName }</span>
-                                    <span className='songDesc'>{ song.description }</span>
+                                    <span className='songDesc'>{ song.author }</span>
                                 </div>
                             </div>
                             <div className='songOptions'>
@@ -100,7 +101,7 @@ function Playlist(){
                         <div className='song' key = {index}>
                             <div className='songProps' onClick={() => handleAddSongToList(song)}>
                                 <span className='songName'>{song.songName}</span>
-                                <span className='songDesc'>Song id in playlist is: {song.id}</span>
+                                <span className='songDesc'>{ song.author }</span>
                             </div>
                             <div className='songOptions'>
                                 <div className='sOption'>
