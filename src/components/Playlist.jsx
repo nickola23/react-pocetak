@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { FaPlus, FaTrash, FaMinus } from 'react-icons/fa';
+import { FaPlus, FaTrash, FaMinus, FaBackward, FaForward, FaPause } from 'react-icons/fa';
 import "./playlist.css";
 
 var i = 0;
@@ -93,6 +93,14 @@ function Playlist(){
                         <input id='search' type='text' value={ inputSong } onChange={ handleChange } />
                         <input type="submit" value='Add' onClick={ handleSubmitSong }/>
                     </form>
+                    <div className='playContainer'>
+                     <div className="playThumbnail"></div>
+                     <div className="playNavbar">
+                        <div className="prevArr playNav"><FaBackward /></div>
+                        <div className="stop playNav"><FaPause /></div>
+                        <div className="nextArr playNav"><FaForward /></div>
+                     </div>
+                    </div>
                 </div>
                 <div className='playlist'>
                 <h2>Playlist</h2>
